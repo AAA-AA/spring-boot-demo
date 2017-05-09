@@ -1,4 +1,4 @@
-package ren.com.cn.web;
+package ren.com.cn.controller;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.RandomStringUtils;
+
 /**
  * Created by IntelliJ IDEA ^_^
  * Author : renhongqiang
@@ -6,6 +8,9 @@
  */
 public class Demo {
     public static void main(String[] args) {
+
+        System.out.println(RandomStringUtils.randomAlphanumeric(6));
+
         try {
             String demo = String.format("qwertyuiop[]%s%s",String.valueOf(9234927),"linda");
         }catch (Exception e) {
