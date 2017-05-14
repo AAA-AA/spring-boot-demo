@@ -18,4 +18,6 @@ public class AppConfig {
     private KafkaConfig kafka;
 
     private RedisConfig redis;
+
+    private EmailConfig email;
 }

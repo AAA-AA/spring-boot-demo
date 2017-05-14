@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -12,7 +11,7 @@ import java.util.concurrent.ConcurrentMap;
  * Date: 2017/4/24 10:14
  * Email: renhongqiang1397@gmail.com
  */
-public class Producer {
+public class CustomProducer {
 
     public static Map<String,BlockingQueue> map = new ConcurrentHashMap<String, BlockingQueue>();
 
@@ -42,7 +41,7 @@ public class Producer {
             new Thread(){
                 @Override
                 public void run() {
-                    Producer.produce("pengpengpeng");
+                    CustomProducer.produce("pengpengpeng");
                 }
             }.start();
         }

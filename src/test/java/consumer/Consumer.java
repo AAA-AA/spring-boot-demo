@@ -1,6 +1,6 @@
 package consumer;
 
-import producer.Producer;
+import producer.CustomProducer;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -12,7 +12,7 @@ import java.util.concurrent.BlockingQueue;
  */
 public class Consumer {
 
-    static BlockingQueue queue = Producer.map.get("topic");
+    static BlockingQueue queue = CustomProducer.map.get("topic");
 
 
     public static void main(String[] args) {

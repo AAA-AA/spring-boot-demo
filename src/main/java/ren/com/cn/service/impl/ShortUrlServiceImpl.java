@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import ren.com.cn.common.utils.BaseCodeUtils;
+import ren.com.cn.dao.KafkaQueueDao;
 import ren.com.cn.dao.RedisCacheDao;
+import ren.com.cn.domain.entity.TUser;
+import ren.com.cn.domain.entity.User;
 import ren.com.cn.service.ShortUrlService;
 
 import java.io.UnsupportedEncodingException;
@@ -26,6 +29,9 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     @Autowired
     private RedisCacheDao cacheDao;
 
+    @Autowired
+    private KafkaQueueDao kafkaQueueDao;
+
     @Override
     public String getShortUrl(String originUrl) {
         if (checkCache(originUrl)) {
@@ -36,6 +42,16 @@ public class ShortUrlServiceImpl implements ShortUrlService {
             }
         }
         Long increment = cacheDao.increment(CACHE_KEY, 100L);
+        TUser user = new TUser();
+        user.setUserName("lala");
+        user.setUserId(20);
+        user.setSex((byte)1);
+
+        try {
+            kafkaQueueDao.send("demo",user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         int salt = 1000;
         return generateShortUrl(increment+salt,originUrl);
     }

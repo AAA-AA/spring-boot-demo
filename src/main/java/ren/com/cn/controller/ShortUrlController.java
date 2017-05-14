@@ -21,7 +21,7 @@ public class ShortUrlController {
     private ShortUrlService shortUrlService;
 
     @RequestMapping(value="/get", method= RequestMethod.GET)
-    public String getShortUrl(@RequestParam(required = true) String originUrl){
+    public String getShortUrl(@RequestParam(required = true,name = "url") String originUrl){
         String shortUrl = shortUrlService.getShortUrl(originUrl);
         return shortUrl;
     }

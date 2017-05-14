@@ -12,26 +12,11 @@ import java.sql.Date;
  */
 @Data
 public class Email {
-
     private String address;
-
     private String from;
-
     private String to;
-
+    private String content;
+    private String subject;
     private Date ctime;
-
     private Date mtime;
-
-    public String getAddress() {
-
-        if ("A".equals(address)) {
-            this.address = "B";
-        }
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }

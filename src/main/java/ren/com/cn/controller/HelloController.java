@@ -24,9 +24,6 @@ public class HelloController {
     @RequestMapping("/hello")
     @ResponseBody
     public String index() {
-
-        redisCacheDao.putToValue("lala",new User("memeda",20),30L, TimeUnit.SECONDS);
-
         return "Hello World";
     }
 
