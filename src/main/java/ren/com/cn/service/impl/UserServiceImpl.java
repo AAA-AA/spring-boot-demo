@@ -2,17 +2,16 @@ package ren.com.cn.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ren.com.cn.dao.mapper.mbg.TUserMapper;
+import ren.com.cn.dao.mapper.TUserMapper;
+import ren.com.cn.dao.mapper.mbg.MBGTUserMapper;
 import ren.com.cn.domain.entity.PageResult;
 import ren.com.cn.domain.entity.TUser;
 import ren.com.cn.domain.entity.TUserExample;
 import ren.com.cn.service.IUserService;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -32,6 +31,7 @@ public class UserServiceImpl implements IUserService {
         PageHelper.startPage(pageNum,pageSize);
         TUserExample example = new TUserExample();
         TUserExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdIsNotNull();
         criteria.andUserNameLike(String.format("%s%s%s","%",username,"%"));
         List<TUser> users = userMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(users,pageSize);

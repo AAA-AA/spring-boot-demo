@@ -22,12 +22,12 @@ public class DemoBean implements InitializingBean {
     private AtomicInteger count = new AtomicInteger(0);
 
     private void refresh() {
-        timer.schedule(new TimerTask() {
+        /*timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 System.out.println("第" + count.incrementAndGet() + "次执行"+new Date());
             }
-        }, 1000, RandomUtils.nextLong(1000 * 1, 1000 * 10));
+        }, 1000, RandomUtils.nextLong(1000 * 1, 1000 * 10));*/
     }
 
     @Override

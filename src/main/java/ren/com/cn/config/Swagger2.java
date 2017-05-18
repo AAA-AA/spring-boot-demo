@@ -1,4 +1,4 @@
-package ren.com.cn;
+package ren.com.cn.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("ren.com.cn.web"))
+                .apis(RequestHandlerSelectors.basePackage("ren.com.cn.controller"))
                 .build();
     }
 

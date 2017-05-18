@@ -26,13 +26,6 @@ spring:
         prefix: /templates/
         suffix: .html
 
-
-
-
-
-
-
-
 # redis配置
 redis:
     minIdle: 100
@@ -56,4 +49,6 @@ kafka:
             zookeeperConnect: 127.0.0.1:2181
 email:
   fromAddr: 820941512@qq.com
+
+
 

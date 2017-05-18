@@ -2,7 +2,6 @@ package ren.com.cn.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ren.com.cn.dto.ErrorInfo;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req,Exception e) throws Exception {
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());

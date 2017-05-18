@@ -5,6 +5,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.ProducerConfig;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +78,16 @@ public class PersistBeanConfig {
         }
         return new JedisCluster(nodes, appConfig.getRedis().getMaxWaitMillis(), 20);
     }
+
+    @Bean
+    public RedissonClient redisson() {
+        List<String> clusterNodes = appConfig.getRedis().getClusterNodes();
+        Config config = new Config();
+        config.useClusterServers().addNodeAddress(clusterNodes.toArray(new String[clusterNodes.size()]));
+        RedissonClient redisson = Redisson.create(config);
+        return redisson;
+    }
+
 
     @Bean
     public RedisGson redisGson() {

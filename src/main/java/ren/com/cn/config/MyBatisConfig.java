@@ -25,7 +25,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement()
-@MapperScan("ren.com.cn.dao.mapper.mbg")
+@MapperScan("ren.com.cn.dao.mapper.**")
 public class MyBatisConfig {
     private static final Logger log = LoggerFactory.getLogger(MyBatisConfig.class);
     @Autowired

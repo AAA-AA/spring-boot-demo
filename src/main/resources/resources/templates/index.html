@@ -25,14 +25,31 @@
         <el-pagination @current-change="findAll" :current-page="currentPage" :page-size="10"
                        layout="total, prev, pager, next, jumper" :total="total" style="float:right"></el-pagination>
     </el-col>
+    <div>
+        <div>{{message}}</div>
+        <input type="text" v-model="message">
+    </div>
 </div>
+
+
+
+
+
+
 </body>
 <script>
 Vue.http.options.emulateJSON = true;
 Vue.http.options.emulateHTTP = true;
 var vm = new Vue({
     el: '#vm',
-    data: {tableData: [], currentPage: 1, total: 10, listLoading: false, username: null},
+    data: {
+        tableData: [],
+        currentPage: 1,
+        total: 10,
+        listLoading: false,
+        username: null,
+        message:'hello world'
+    },
     mounted: function () {
         this.findAll();
     },
