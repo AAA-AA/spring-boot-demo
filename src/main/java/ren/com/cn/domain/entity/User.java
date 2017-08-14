@@ -1,23 +1,22 @@
 package ren.com.cn.domain.entity;
 
+import java.util.Date;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-/**
- * Created by IntelliJ IDEA ^_^
- * Author : renhongqiang
- * Date: 2017/4/18 10:15
- * Email: renhongqiang1397@gmail.com
- */
 @Data
 public class User {
+    private Integer userId;
 
-    private Long id;
+    private String userName;
 
-    private String name;
-    private Integer age;
+    private Byte sex;
+
+    private Date ctime;
+
+    private Date mtime;
+
+    /**
+     * 0为正常，1为删除
+     */
+    private Byte status;
 }

@@ -4,10 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ren.com.cn.dao.impl.RedisCacheDaoImpl;
-import ren.com.cn.domain.entity.User;
 import ren.com.cn.exception.MyException;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -27,12 +24,6 @@ public class HelloController {
         return "Hello World";
     }
 
-    @RequestMapping("/getCache")
-    @ResponseBody
-    public String getCache() {
-        User user = (User) redisCacheDao.getFromValue("lala",User.class);
-        return user.toString();
-    }
 
     @RequestMapping("/json")
     public String json() throws MyException {

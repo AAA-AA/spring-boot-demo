@@ -1,9 +1,10 @@
 package ren.com.cn.service;
 
+import org.apache.ibatis.annotations.Param;
 import ren.com.cn.domain.entity.PageResult;
-import ren.com.cn.domain.entity.TUser;
+import ren.com.cn.domain.entity.User;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -13,6 +14,12 @@ import java.util.Map;
  */
 public interface IUserService {
 
-    PageResult<TUser> getTableData(int pageNum, int pageSize, String username);
+    PageResult<User> getTableData(int pageNum, int pageSize, String username);
+
+    int batchInsert(List<User> userList);
+
+    int batchInsertSelective(List<User> userList);
+
+    int testBatchInsert();
 
 }

@@ -1,5 +1,6 @@
 package ren.com.cn.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,8 @@ import ren.com.cn.service.MailService;
  * Email: renhongqiang1397@gmail.com
  */
 @Service
+@Slf4j
 public class MailServiceImpl implements MailService {
-
-    private Logger LOGGER = LoggerFactory.getLogger(MailServiceImpl.class);
 
     @Autowired
     private JavaMailSender mailSender;
@@ -34,7 +34,7 @@ public class MailServiceImpl implements MailService {
         try {
             mailSender.send(message);
         }catch (Exception e) {
-            LOGGER.error("发送邮件失败！{}",e);
+            log.error("发送邮件失败！{}",e);
         }
 
     }

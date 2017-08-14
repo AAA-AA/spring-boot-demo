@@ -34,7 +34,7 @@
 		</sqlMapGenerator>
 
 		<!--接口mapper -->
-		<javaClientGenerator targetPackage="ren.com.cn.dao.mapper.mbg"
+		<javaClientGenerator targetPackage="ren.com.cn.dao.mapper.ext"
 			targetProject="src/main/java" type="XMLMAPPER">
 			<property name="renamePlugin.prefix" value="MBG" />
 			<property name="enableSubPackages" value="true"/>

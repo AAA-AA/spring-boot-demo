@@ -3,7 +3,6 @@ package ren.com.cn.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ren.com.cn.domain.entity.PageResult;
-import ren.com.cn.domain.entity.TUser;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.service.IUserService;
 
@@ -38,27 +37,19 @@ public class UserController {
         return r;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/testBatchInsert")
     @ResponseBody
-    public String postUser(@RequestBody User user) {
-        users.put(user.getId(), user);
-        return "success";
+    public int testBatchInsert() {
+        return userService.testBatchInsert();
     }
+
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public User getUser(@PathVariable Long id) {
 
         return users.get(id);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @ResponseBody
-    public String putUser(@PathVariable Long id, @RequestBody User user) {
-        User u = users.get(id);
-        u.setId(user.getId());
-        users.put(id, u);
-        return "success";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -69,7 +60,7 @@ public class UserController {
 
     @RequestMapping(value = "/getTableData",method = RequestMethod.GET)
     @ResponseBody
-    public PageResult<TUser> getTableData(@RequestParam(name = "pageNum") int pageNum, int pageSize, String username) {
+    public PageResult<User> getTableData(@RequestParam(name = "pageNum") int pageNum, int pageSize, String username) {
         return userService.getTableData(pageNum, pageSize, username);
     }
 

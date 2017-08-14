@@ -27,36 +27,36 @@ public class BaseCodeUtils {
 
     };
 
-    public static String _10_to_62(long number){
-        Long rest=number;
-        Stack<Character> stack=new Stack<Character>();
-        StringBuilder result=new StringBuilder(0);
-        while(rest!=0){
-            stack.add(digits[new Long((rest-(rest/62)*62)).intValue()]);
-            rest=rest/62;
+    public static String _10_to_62(long number) {
+        Long rest = number;
+        Stack<Character> stack = new Stack<Character>();
+        StringBuilder result = new StringBuilder(0);
+        while (rest != 0) {
+            stack.add(digits[new Long((rest - (rest / 62) * 62)).intValue()]);
+            rest = rest / 62;
         }
-        for(;!stack.isEmpty();){
+        for (; !stack.isEmpty(); ) {
             result.append(stack.pop());
         }
         return result.toString();
 
     }
 
-    public static long _62_to_10(String sixty_str){
-        int multiple=1;
-        long result=0;
+    public static long _62_to_10(String sixty_str) {
+        int multiple = 1;
+        long result = 0;
         Character c;
-        for(int i=0;i<sixty_str.length();i++){
-            c=sixty_str.charAt(sixty_str.length()-i-1);
-            result+=_62_value(c)*multiple;
-            multiple=multiple*62;
+        for (int i = 0; i < sixty_str.length(); i++) {
+            c = sixty_str.charAt(sixty_str.length() - i - 1);
+            result += _62_value(c) * multiple;
+            multiple = multiple * 62;
         }
         return result;
     }
 
-    private static int _62_value(Character c){
-        for(int i=0;i<digits.length;i++){
-            if(c==digits[i]){
+    private static int _62_value(Character c) {
+        for (int i = 0; i < digits.length; i++) {
+            if (c == digits[i]) {
                 return i;
             }
         }
