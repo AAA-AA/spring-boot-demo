@@ -24,15 +24,12 @@ import java.util.concurrent.TimeUnit;
  * Date: 2017/4/18 22:09
  * Email: renhongqiang1397@gmail.com
  */
-@Repository
 public class RedisCacheDaoImpl<T> implements RedisCacheDao<T> {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RedisCacheDaoImpl.class);
 
-    @Autowired
     private RedisGson redisCacheGson;
 
-    @Resource(name = "jedisCluster")
     private JedisCluster jedisCluster;
 
     public Long getExpire(String key, TimeUnit timeUnit) {

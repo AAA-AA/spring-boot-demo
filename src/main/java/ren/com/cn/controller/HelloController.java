@@ -15,7 +15,6 @@ import ren.com.cn.exception.MyException;
 @Controller
 public class HelloController {
 
-    @Autowired
     private RedisCacheDaoImpl redisCacheDao;
 
     @RequestMapping("/hello")

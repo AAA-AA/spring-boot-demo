@@ -36,7 +36,7 @@ public class CollectionTest {
         Map<String,Integer> diffOnLeft=diffHadle.entriesOnlyOnLeft();//返回左边的Map中不同或者特有的元素
         Map<String,Integer> diffOnRight=diffHadle.entriesOnlyOnRight();//返回右边的Map中不同或者特有的元素
         for(Map.Entry<String, Integer> entry:diffOnRight.entrySet()){
-            System.out.println("共同Map中key:"+entry.getKey()+"  value:"+entry.getValue());
+            System.out.println("共同Map中key:"+entry.getKey()+"  enable:"+entry.getValue());
         }
 
 //找出2个Set的不相同的元素和相同的元素，以Set形式返回

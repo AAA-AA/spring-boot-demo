@@ -49,73 +49,73 @@
 		<!--库,表-->
 		<!--<table schema="vip"
 			tableName="vip_bcoin_salary" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_user_info" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_app_auth" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_app_info" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_message_task" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_month" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_month_mapping" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_month_order" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_pay_order" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_pay_order_index" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_platform" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_privilege" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_privilege_mapping" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_recharge_order" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_route_resource" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_emoji_package" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_emoji" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_config" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_game" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_app_version" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>-->
 	<!--	<table tableName="vip_member_exchange_history" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_order_make_up_history" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>
 		<table tableName="vip_temp" >
-			<property name="useActualColumnNames" value="false" />
+			<property name="useActualColumnNames" enable="false" />
 		</table>-->
 		<!--<table tableName="vip_change_history" >
 			<property name="useActualColumnNames" value="false" />

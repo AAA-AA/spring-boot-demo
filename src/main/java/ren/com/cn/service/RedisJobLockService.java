@@ -20,7 +20,6 @@ import java.util.Date;
 public class RedisJobLockService {
     private final static Logger LOGGER = LoggerFactory.getLogger("task");
 
-    @Autowired
     private RedisCacheDao cacheService;
 
     public static final String JOB_LOCK_VIP_KEY = "jobLock%s";

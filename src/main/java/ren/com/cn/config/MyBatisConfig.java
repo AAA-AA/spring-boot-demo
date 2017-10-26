@@ -1,6 +1,6 @@
 package ren.com.cn.config;
 
-import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -25,7 +25,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement()
-@MapperScan("ren.com.cn.dao.mapper.**")
+@MapperScan("ren.com.cn.dao.mapper.*")
 public class MyBatisConfig {
     private static final Logger log = LoggerFactory.getLogger(MyBatisConfig.class);
     @Autowired
@@ -38,9 +38,8 @@ public class MyBatisConfig {
 //        bean.setTypeAliasesPackage("org.apache.mycat.advisor.persistence.model");
 //        bean.setConfigLocation(new ClassPathResource("classpath:spring/mybatis-config.xml"));
         //分页插件
-        PageHelper pageHelper = new PageHelper();
+        PageInterceptor pageHelper = new PageInterceptor();
         Properties properties = new Properties();
-        properties.setProperty("dialect", "mysql");
         properties.setProperty("pageSizeZero", "true");
 
         properties.setProperty("reasonable", "false");

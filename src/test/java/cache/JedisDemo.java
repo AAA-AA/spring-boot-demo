@@ -1,7 +1,11 @@
 package cache;
 
+import com.alibaba.fastjson.JSON;
 import redis.clients.jedis.Jedis;
+import sun.misc.Cleaner;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -12,8 +16,21 @@ import java.util.Set;
  */
 public class JedisDemo {
     public static void main(String[] args) {
-        Jedis jedis = new Jedis("192.168.80.31",6379,3000);
-        jedis.set("lala","aaaa");
+        Jedis jedis = new Jedis("10.101.91.246",8035,3000);
+        for (int i = 0;i < 100;i++) {
+            NumTest numTest = new NumTest();
+            numTest.setValue(i);
+            numTest.setDate(LocalDate.now());
+            jedis.set(String.format("num_%s",i), JSON.toJSONString(numTest));
+        }
+
+        for (int i = 0;i < 100;i++) {
+            String value = jedis.get(String.format("num_%s", i));
+            NumTest numTest = JSON.parseObject(value, NumTest.class);
+            System.out.println(numTest);
+        }
+
+
         String lala = jedis.get("lala");
 
 
@@ -27,5 +44,34 @@ public class JedisDemo {
 
         jedis.close();
 
+    }
+
+    static class NumTest {
+        private Integer value;
+        private LocalDate date;
+
+        public Integer getValue() {
+            return value;
+        }
+
+        public void setValue(Integer value) {
+            this.value = value;
+        }
+
+        public LocalDate getDate() {
+            return date;
+        }
+
+        public void setDate(LocalDate date) {
+            this.date = date;
+        }
+
+        @Override
+        public String toString() {
+            return "NumTest{" +
+                    "enable=" + value +
+                    ", date=" + date +
+                    '}';
+        }
     }
 }

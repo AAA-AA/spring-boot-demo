@@ -1,5 +1,6 @@
 package ren.com.cn.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
@@ -29,17 +30,17 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public PageResult<User> getTableData(int pageNum, int pageSize, String username) {
-
-        PageHelper.startPage(pageNum, pageSize);
+    public PageInfo getTableData(PageInfo page, String username) {
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
-        criteria.andUserIdIsNotNull();
-        criteria.andUserNameLike(String.format("%s%s%s", "%", username, "%"));
-        List<User> users = userMapper.selectByExample(example);
-        PageInfo pageInfo = new PageInfo(users, pageSize);
+        criteria.andUserIdIsNotNull().andUserNameLike(String.format("%s%s%s", "%",username,"%"));
+        List<User> list = userMapper.selectByExample(example);
 
-        return new PageResult(users, pageInfo.getTotal());
+        Long total = ((Page) list).getTotal();
+        page.setList(list);
+        page.setTotal(total);
+        return page;
 
     }
 
@@ -63,19 +64,13 @@ public class UserServiceImpl implements IUserService {
             user.setSex((byte) 1);
             list.add(user);
         }
-        Long start = System.currentTimeMillis();
         int resultRows = 0;
-        resultRows = batchInsertSelective(list.subList(0,4));
-        /*for (int j = 0; j < list.size(); j += 10000) {
-            int toIndex = j + 10000;
-            if (toIndex > list.size()) {
-                resultRows += batchInsert(list.subList(j, list.size()));
-            } else {
-                resultRows += batchInsert(list.subList(j, toIndex));
-            }
-        }
-        Long end = System.currentTimeMillis();
-        log.error("batchInsert {} data cost :{}ms", resultRows, end - start);*/
+        resultRows = batchInsertSelective(list.subList(0, 4));
         return resultRows;
+    }
+
+    @Override
+    public void saveUser(User user) {
+        userMapper.insertSelective(user);
     }
 }

@@ -28,23 +28,18 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     private static final String CACHE_KEY = "cache_key";
 
     @Autowired
-    private RedisCacheDao cacheDao;
-
-    @Autowired
     private KafkaQueueDao kafkaQueueDao;
 
     @Override
     public String getShortUrl(String originUrl) {
         if (checkCache(originUrl)) {
             try {
-                return (String)cacheDao.getFromValue(DigestUtils.md5DigestAsHex(originUrl.getBytes("utf-8")) ,String.class);
-            } catch (UnsupportedEncodingException e) {
+            } catch (Exception e) {
                 log.error("redis get data error: {}",e.getMessage());
                 e.printStackTrace();
             }
         }
         log.info("this is slf4j test: {}","lalala");
-        Long increment = cacheDao.increment(CACHE_KEY, 100L);
         User user = new User();
         user.setUserName("lala");
         user.setUserId(20);
@@ -60,13 +55,12 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         int salt = 1000;
         Long end = System.currentTimeMillis();
         System.out.println("耗时："+(end-start));
-        return generateShortUrl(increment+salt,originUrl);
+        return "";
     }
 
     private boolean checkCache(String originUrl) {
         try {
-            return cacheDao.hasKey(DigestUtils.md5DigestAsHex(originUrl.getBytes("utf-8")));
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -77,8 +71,8 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         String suffix = BaseCodeUtils._10_to_62(code);
         String targetUrl = String.format("%s%s",SHORT_URL_PREFFIX,suffix);
         try {
-            cacheDao.putToValue(DigestUtils.md5DigestAsHex(originUrl.getBytes("utf-8")),targetUrl,24L, TimeUnit.HOURS);
-        } catch (UnsupportedEncodingException e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return targetUrl;

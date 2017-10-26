@@ -1,8 +1,10 @@
 package ren.com.cn.controller;
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import ren.com.cn.domain.entity.PageResult;
+import ren.com.cn.common.annotation.EnableRepeatSubmit;
+import ren.com.cn.common.base.ResponseDTO;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.service.IUserService;
 
@@ -37,12 +39,21 @@ public class UserController {
         return r;
     }
 
+
+    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+    @ResponseBody
+    @EnableRepeatSubmit(onceMaxSeconds = 5)
+    public ResponseDTO saveUser(User user) {
+        userService.saveUser(user);
+        return ResponseDTO.success();
+    }
+
+
     @RequestMapping(value = "/testBatchInsert")
     @ResponseBody
     public int testBatchInsert() {
         return userService.testBatchInsert();
     }
-
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -58,10 +69,10 @@ public class UserController {
         return "success";
     }
 
-    @RequestMapping(value = "/getTableData",method = RequestMethod.GET)
+    @RequestMapping(value = "/getTableData", method = RequestMethod.GET)
     @ResponseBody
-    public PageResult<User> getTableData(@RequestParam(name = "pageNum") int pageNum, int pageSize, String username) {
-        return userService.getTableData(pageNum, pageSize, username);
+    public PageInfo getTableData(PageInfo page, String username) {
+        return userService.getTableData(page, username);
     }
 
 }

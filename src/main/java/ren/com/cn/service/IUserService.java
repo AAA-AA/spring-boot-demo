@@ -1,7 +1,7 @@
 package ren.com.cn.service;
 
-import org.apache.ibatis.annotations.Param;
-import ren.com.cn.domain.entity.PageResult;
+import com.github.pagehelper.PageInfo;
+import ren.com.cn.common.annotation.EnableRepeatSubmit;
 import ren.com.cn.domain.entity.User;
 
 import java.util.List;
@@ -14,12 +14,15 @@ import java.util.List;
  */
 public interface IUserService {
 
-    PageResult<User> getTableData(int pageNum, int pageSize, String username);
+    PageInfo getTableData(PageInfo page, String username);
 
     int batchInsert(List<User> userList);
 
     int batchInsertSelective(List<User> userList);
 
     int testBatchInsert();
+
+    @EnableRepeatSubmit(onceMaxSeconds = 5)
+    void saveUser(User user);
 
 }

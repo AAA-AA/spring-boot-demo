@@ -32,7 +32,7 @@ public class SortMapTest {
 
 
         for (String key : paramTreemap.keySet()) {
-            System.out.println(String.format("key is :%s, value is :%s", key, paramTreemap.get(key)));
+            System.out.println(String.format("key is :%s, enable is :%s", key, paramTreemap.get(key)));
         }
 
         String webUrl = "";

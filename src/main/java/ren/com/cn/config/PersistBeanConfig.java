@@ -28,6 +28,7 @@ import ren.com.cn.common.utils.JsonUtils;
 import ren.com.cn.config.yml.AppConfig;
 import ren.com.cn.config.yml.KafkaConfig;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -67,7 +68,6 @@ public class PersistBeanConfig {
         return new Producer(new ProducerConfig(properties));
     }
 
-    @Bean
     public JedisCluster jedisCluster() {
         List<String> clusterNodes = appConfig.getRedis().getClusterNodes();
         LOGGER.info("{},{}", "redis", JsonUtils.toJson(appConfig.getRedis()));
@@ -80,21 +80,25 @@ public class PersistBeanConfig {
     }
 
     @Bean
-    public RedissonClient redisson() {
+    public RedissonClient redisson(){
         List<String> clusterNodes = appConfig.getRedis().getClusterNodes();
+        List<String> nodes = new ArrayList<>(clusterNodes.size());
+        for (String node:clusterNodes) {
+            node = String.format("%s%s","redis://",node);
+            nodes.add(node);
+        }
         Config config = new Config();
-        config.useClusterServers().addNodeAddress(clusterNodes.toArray(new String[clusterNodes.size()]));
+        config.useSingleServer()
+                .setAddress(nodes.toArray(new String[nodes.size()])[0]);
         RedissonClient redisson = Redisson.create(config);
         return redisson;
     }
 
 
-    @Bean
     public RedisGson redisGson() {
         return GsonFactory.createRedisCacheGson();
     }
 
-    @Bean
     public CacheManager cacheManager() {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
 

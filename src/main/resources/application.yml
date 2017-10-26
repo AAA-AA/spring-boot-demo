@@ -1,6 +1,6 @@
 # 端口，暂无作用server:
 server:
-  port: 9020
+  port: 8088
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/demo
@@ -28,13 +28,17 @@ spring:
 
 # redis配置
 redis:
+    host: 10.101.91.246
+    port: 8035
     minIdle: 100
     maxIdle: 300
     maxTotal: 1500
+
     #超时时间为3秒
+    timeout: 3000
     maxWaitMillis: 8000
     expireSeconds: 3
-    clusterNodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
+    clusterNodes: 10.101.91.246:8035
 
 
 kafka:

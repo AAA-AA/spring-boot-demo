@@ -22,7 +22,6 @@ public class CommonTask {
 
    private static final Logger LOGGER = LoggerFactory.getLogger(CommonTask.class);
 
-    @Autowired
     private RedissonClient redisson;
 
     @Autowired

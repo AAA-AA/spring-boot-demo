@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ren.com.cn.dao.RedisCacheDao;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -19,11 +20,12 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping(value = "/purge")
 public class PurgeCacheController {
 
-    @Autowired
     private RedisCacheDao cacheDao;
 
     @RequestMapping(value = "/shortUrl")
-    public String purgeShortUrlCache(@RequestParam(required = true ,value = "raw_key") String raw_key) throws UnsupportedEncodingException {
+    public String purgeShortUrlCache(HttpServletRequest request,@RequestParam(required = true ,value = "raw_key") String raw_key) throws UnsupportedEncodingException {
+        request.getRequestURI();
+
         String key = DigestUtils.md5DigestAsHex(raw_key.getBytes("utf-8"));
         cacheDao.delKey(key);
         return  "ok";
