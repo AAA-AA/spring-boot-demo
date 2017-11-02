@@ -178,17 +178,6 @@ public class DateConvertUtils {
         return format(beforeDateLastTime(date, before), dateFormat);
     }
 
-
-
-
-    public static void main(String[] args) {
-        Date date2 = parse("2011-09-01 00:00:00", "yyyy-MM-dd HH:mm:ss");
-        Date date1 = parse("2012-01-01 16:00:00", "yyyy-MM-dd HH:mm:ss");
-        // System.out.println(dateDiff(TIME_INTERVAL_MONTH, date1, date2));
-        // System.out.println(dateDiff(TIME_INTERVAL_YEAR, date1, date2));
-        System.out.println(dateDiff(TIME_INTERVAL_DAY, date1, date2));
-    }
-
     public static String getGMTDateStr() {
         Calendar cd = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_GMT, Locale.US);

@@ -7,6 +7,7 @@
 
 		<plugin type="com.github.mybatis.generator.plugins.LombokPlugin"/>
 		<plugin type="com.github.mybatis.generator.plugins.RenamePlugin" />
+
 		<plugin type="com.github.mybatis.generator.plugins.SeparateUserCodePlugin" />
 
 		<commentGenerator type="com.github.mybatis.generator.comment.CommentGenerator">

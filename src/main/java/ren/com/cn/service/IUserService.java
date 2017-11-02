@@ -1,7 +1,7 @@
 package ren.com.cn.service;
 
 import com.github.pagehelper.PageInfo;
-import ren.com.cn.common.annotation.EnableRepeatSubmit;
+import ren.com.cn.common.annotation.EnableReSubmit;
 import ren.com.cn.domain.entity.User;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface IUserService {
 
     int testBatchInsert();
 
-    @EnableRepeatSubmit(onceMaxSeconds = 5)
+    @EnableReSubmit(maxWait = 5)
     void saveUser(User user);
 
 }

@@ -1,6 +1,6 @@
 package ren.com.cn.invoker;
 
-import ren.com.cn.common.annotation.EnableRepeatSubmit;
+import ren.com.cn.common.annotation.EnableReSubmit;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -19,9 +19,9 @@ public final class HttpInvoker implements InvocationHandler {
         if (clazz == Object.class) {
             return method.invoke(this,args);
         }
-        EnableRepeatSubmit repeatSubmit = method.getAnnotation(EnableRepeatSubmit.class);
+        EnableReSubmit repeatSubmit = method.getAnnotation(EnableReSubmit.class);
         if (null == repeatSubmit) {
-            throw new IllegalArgumentException("need @EnableRepeatSubmit");
+            throw new IllegalArgumentException("need @EnableReSubmit");
         }
         return null;
     }

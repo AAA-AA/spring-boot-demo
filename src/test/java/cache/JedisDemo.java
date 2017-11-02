@@ -2,10 +2,8 @@ package cache;
 
 import com.alibaba.fastjson.JSON;
 import redis.clients.jedis.Jedis;
-import sun.misc.Cleaner;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -16,15 +14,15 @@ import java.util.Set;
  */
 public class JedisDemo {
     public static void main(String[] args) {
-        Jedis jedis = new Jedis("10.101.91.246",8035,3000);
-        for (int i = 0;i < 100;i++) {
+        Jedis jedis = new Jedis("10.101.91.246", 8035, 3000);
+        for (int i = 0; i < 100; i++) {
             NumTest numTest = new NumTest();
             numTest.setValue(i);
             numTest.setDate(LocalDate.now());
-            jedis.set(String.format("num_%s",i), JSON.toJSONString(numTest));
+            jedis.set(String.format("num_%s", i), JSON.toJSONString(numTest));
         }
 
-        for (int i = 0;i < 100;i++) {
+        for (int i = 0; i < 100; i++) {
             String value = jedis.get(String.format("num_%s", i));
             NumTest numTest = JSON.parseObject(value, NumTest.class);
             System.out.println(numTest);
@@ -34,10 +32,10 @@ public class JedisDemo {
         String lala = jedis.get("lala");
 
 
-        jedis.sadd("set1","a","b","c");
-        jedis.sadd("set2","c","d","k","123","fjasf");
+        jedis.sadd("set1", "a", "b", "c");
+        jedis.sadd("set2", "c", "d", "k", "123", "fjasf");
 
-        Set<String> set1 = jedis.spop("set1",10);
+        Set<String> set1 = jedis.spop("set1", 10);
         //Set<String> set = jedis.sunion(jedis.get("set1"), jedis.get("set2"));
 
         System.out.println(set1);

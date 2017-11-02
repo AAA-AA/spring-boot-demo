@@ -10,7 +10,6 @@ public class ResponseDTO {
     private String code;
     private Object data;
     private String message;
-    private String url;
 
     public ResponseDTO(ReturnCode returnCode, Object data) {
         this.code = returnCode.getCode();
@@ -44,14 +43,6 @@ public class ResponseDTO {
     public static ResponseDTO error(String message, Object data) {
         ResponseDTO dto = new ResponseDTO(ReturnCode.SERVER_ERROR.getCode(), data, message);
         return dto;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public String getCode() {

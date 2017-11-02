@@ -18,14 +18,12 @@ public class ProxyTest {
 
         DynamicProxy proxy = new DynamicProxy();
 
-        MailService mailService1 = (MailService) proxy.bindRelation(mailService);
 
         Email email = new Email();
         email.setFrom("820941512@qq.com");
         email.setTo("1296805631@qq.com");
         email.setSubject("this is a test");
         email.setContent("lalalal");
-        mailService1.send(email);
 
 
 

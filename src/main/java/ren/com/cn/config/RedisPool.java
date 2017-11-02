@@ -99,16 +99,4 @@ public class RedisPool {
             jedis.close();
         }
     }
-
-    public static void main(String[] args) {
-        Jedis jedis = RedisPool.getJedis();
-        //do something
-        String lala = jedis.get("lala");
-        if (null == lala) {
-            jedis.set("lala", JSON.toJSONString(true));
-        }
-
-        String result = jedis.get("lala");
-        RedisPool.close(jedis);
-    }
 }

@@ -63,10 +63,4 @@ public class BaseCodeUtils {
         return -1;
     }
 
-    public static void main(String[] args) {
-        System.out.println(62);
-        System.out.println(_10_to_62(62));
-        System.out.println(_62_to_10("30"));
-    }
-
 }

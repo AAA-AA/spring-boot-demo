@@ -3,13 +3,14 @@ package ren.com.cn.controller;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import ren.com.cn.common.annotation.EnableRepeatSubmit;
+import ren.com.cn.common.annotation.EnableReSubmit;
 import ren.com.cn.common.base.ResponseDTO;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.service.IUserService;
 
 import javax.annotation.Resource;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -42,9 +43,9 @@ public class UserController {
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     @ResponseBody
-    @EnableRepeatSubmit(onceMaxSeconds = 5)
+    @EnableReSubmit(maxWait = 100, unit = TimeUnit.SECONDS)
     public ResponseDTO saveUser(User user) {
-        userService.saveUser(user);
+        //userService.saveUser(user);
         return ResponseDTO.success();
     }
 

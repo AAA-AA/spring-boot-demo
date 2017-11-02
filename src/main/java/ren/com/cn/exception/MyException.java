@@ -6,7 +6,7 @@ package ren.com.cn.exception;
  * Date: 2017/4/18 17:11
  * Email: renhongqiang1397@gmail.com
  */
-public class MyException extends Exception {
+public class MyException extends RuntimeException {
 
     public MyException(String message) {
         super(message);
