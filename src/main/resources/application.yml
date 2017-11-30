@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/demo
     username: root
-    password: 1101
+    password: xxxx
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
@@ -13,7 +13,7 @@ spring:
   mail:
     host: smtp.qq.com
     username: 820941512@qq.com
-    password: veggixwavigrbbfa1
+    password: 12veggi4xwavigrbbfa1
     default-encoding: UTF-8
     properties:
       mail:
@@ -27,8 +27,8 @@ spring:
         suffix: .html
 
 delivery:
-  appId: 2b8c4ee8-7df7-4bc2-a269-a0818d5329f2
-  appSecret: 871b9119-8208-4b43-9b19-4f02eb06bdd0
+  appId: dfkjdf-7df7-4bc2-a269-a0818d5329f2
+  appSecret: jfds871b9119-8208-4b43-9b19-4f02eb06bdd0
   apiUrl: https://exam-anubis.ele.me/anubis-webapi
   callbackUrl: https://delimont-sem.alpha.elenet.me/wepos/wechat/pay/push
 
