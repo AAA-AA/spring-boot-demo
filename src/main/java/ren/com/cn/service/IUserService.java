@@ -25,4 +25,5 @@ public interface IUserService {
     @EnableReSubmit(maxWait = 5)
     void saveUser(User user);
 
+    User getById(Long id);
 }

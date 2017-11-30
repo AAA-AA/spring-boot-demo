@@ -26,6 +26,13 @@ spring:
         prefix: /templates/
         suffix: .html
 
+delivery:
+  appId: 2b8c4ee8-7df7-4bc2-a269-a0818d5329f2
+  appSecret: 871b9119-8208-4b43-9b19-4f02eb06bdd0
+  apiUrl: https://exam-anubis.ele.me/anubis-webapi
+  callbackUrl: https://delimont-sem.alpha.elenet.me/wepos/wechat/pay/push
+
+
 # redis配置
 redis:
     host: 127.0.0.1

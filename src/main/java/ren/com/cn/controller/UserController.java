@@ -1,10 +1,12 @@
 package ren.com.cn.controller;
 
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ren.com.cn.common.annotation.EnableReSubmit;
 import ren.com.cn.common.base.ResponseDTO;
+import ren.com.cn.config.yml.DeliveryConfig;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.service.IUserService;
 
@@ -22,6 +24,9 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping(value = "/user")
 public class UserController {
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
+
+    @Autowired
+    private DeliveryConfig deliveryConfig;
 
     @Resource
     private IUserService userService;
@@ -43,9 +48,10 @@ public class UserController {
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     @ResponseBody
-    @EnableReSubmit(maxWait = 100, unit = TimeUnit.SECONDS)
-    public ResponseDTO saveUser(User user) {
-        //userService.saveUser(user);
+    //@EnableReSubmit(maxWait = 100, unit = TimeUnit.SECONDS)
+    public ResponseDTO saveUser(@RequestBody User user) {
+        String apiUrl = deliveryConfig.getApiUrl();
+        userService.saveUser(user);
         return ResponseDTO.success();
     }
 
@@ -61,7 +67,7 @@ public class UserController {
     @ResponseBody
     public User getUser(@PathVariable Long id) {
 
-        return users.get(id);
+        return userService.getById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

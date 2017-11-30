@@ -1,6 +1,7 @@
 package ren.com.cn.exception;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -9,6 +10,7 @@ import lombok.Data;
  * Email: renhongqiang1397@gmail.com
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class NoCheckException extends RuntimeException {
 
     private int code;

@@ -9,7 +9,6 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ren.com.cn.dao.mapper.gen.UserMapper;
-import ren.com.cn.domain.entity.PageResult;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.domain.entity.UserExample;
 import ren.com.cn.service.IUserService;
@@ -46,12 +45,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int batchInsert(List<User> userList) {
-        return userMapper.batchInsert(userList);
+        return userMapper.insertList(userList);
     }
 
     @Override
     public int batchInsertSelective(List<User> userList) {
-        return userMapper.batchInsertSelective(userList);
+        return userMapper.insertListSelective(userList);
     }
 
 
@@ -61,7 +60,7 @@ public class UserServiceImpl implements IUserService {
         for (int i = 0; i < 1000000; i++) {
             User user = new User();
             user.setUserName(RandomStringUtils.randomAlphabetic(4));
-            user.setSex((byte) 1);
+            user.setSex(1);
             list.add(user);
         }
         int resultRows = 0;
@@ -72,5 +71,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void saveUser(User user) {
         userMapper.insertSelective(user);
+    }
+
+    @Override
+    public User getById(Long id) {
+        return userMapper.selectByPrimaryKey(id.intValue());
     }
 }

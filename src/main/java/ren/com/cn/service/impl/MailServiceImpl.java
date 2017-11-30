@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import ren.com.cn.domain.entity.Email;
 import ren.com.cn.service.MailService;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by IntelliJ IDEA ^_^
  * Author : renhongqiang
@@ -36,6 +38,10 @@ public class MailServiceImpl implements MailService {
         }catch (Exception e) {
             log.error("发送邮件失败！{}",e);
         }
+    }
 
+    @PostConstruct
+    private void afterPropertySet() {
+        log.info("****************");
     }
 }

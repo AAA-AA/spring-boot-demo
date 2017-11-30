@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * Date: 2017/8/5 23:21
  * Email: renhongqiang1397@gmail.com
  */
-public class Demo2 {
+public class CamelTest {
 
     private static final Pattern line = Pattern.compile("_(\\w)");
 

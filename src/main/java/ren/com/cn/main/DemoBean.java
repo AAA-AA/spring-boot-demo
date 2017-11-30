@@ -2,8 +2,10 @@ package ren.com.cn.main;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.support.MethodReplacer;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Email: renhongqiang1397@gmail.com
  */
 @Service
-public class DemoBean implements InitializingBean {
+public class DemoBean implements InitializingBean,MethodReplacer {
 
     private Timer timer = new Timer();
     private AtomicInteger count = new AtomicInteger(0);
@@ -33,5 +35,10 @@ public class DemoBean implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         refresh();
+    }
+
+    @Override
+    public Object reimplement(Object o, Method method, Object[] objects) throws Throwable {
+        return null;
     }
 }

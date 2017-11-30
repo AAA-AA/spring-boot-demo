@@ -1,5 +1,4 @@
 import ren.com.cn.domain.entity.Email;
-import ren.com.cn.proxy.DynamicProxy;
 import ren.com.cn.service.MailService;
 import ren.com.cn.service.impl.MailServiceImpl;
 
@@ -16,7 +15,6 @@ public class ProxyTest {
 
         MailService mailService = new MailServiceImpl();
 
-        DynamicProxy proxy = new DynamicProxy();
 
 
         Email email = new Email();

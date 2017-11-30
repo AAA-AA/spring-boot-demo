@@ -3,15 +3,10 @@ package ren.com.cn.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 import ren.com.cn.common.utils.BaseCodeUtils;
 import ren.com.cn.dao.KafkaQueueDao;
-import ren.com.cn.dao.RedisCacheDao;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.service.ShortUrlService;
-
-import java.io.UnsupportedEncodingException;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by IntelliJ IDEA ^_^
@@ -43,7 +38,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         User user = new User();
         user.setUserName("lala");
         user.setUserId(20);
-        user.setSex((byte)1);
+        user.setSex(1);
         Long start = System.currentTimeMillis();
         try {
             for (int i = 0;i < 100000;i++) {
