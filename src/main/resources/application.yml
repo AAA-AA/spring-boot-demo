@@ -27,10 +27,10 @@ spring:
         suffix: .html
 
 delivery:
-  appId: dfkjdf-7df7-4bc2-a269-a0818d5329f2
-  appSecret: jfds871b9119-8208-4b43-9b19-4f02eb06bdd0
-  apiUrl: https://exam-anubis.ele.me/anubis-webapi
-  callbackUrl: https://delimont-sem.alpha.elenet.me/wepos/wechat/pay/push
+  appId: xxx
+  appSecret: wewdfads
+  apiUrl: https://baidu.com
+  callbackUrl: https://test.com.me/callback
 
 
 # redis配置
