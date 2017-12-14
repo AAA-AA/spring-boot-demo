@@ -6,6 +6,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -32,7 +33,12 @@ public class RedisPool {
     static {
         Yaml yaml = new Yaml();
 
-        InputStream inputStream = RedisPool.class.getClass().getResourceAsStream("/application.yml");
+        InputStream inputStream = null;
+        try {
+            inputStream = RedisPool.class.getClass().getResource("/application.yml").openStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if (inputStream == null) {
             throw new IllegalArgumentException("配置文件未找到！");
         }
