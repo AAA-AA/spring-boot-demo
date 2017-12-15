@@ -22,6 +22,8 @@ public class RedisConfig {
 
     private int minIdle;
 
+    private int maxTotal;
+
     private List<String> clusterNodes = Lists.newLinkedList();
 
 }

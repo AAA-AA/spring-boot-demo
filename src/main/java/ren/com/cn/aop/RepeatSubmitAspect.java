@@ -36,13 +36,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RepeatSubmitAspect {
 
     private static Map<String, Object> test = new ConcurrentHashMap(16);
-    private Jedis jedis = RedisPool.getJedis();
 
     @Autowired
     private RedissonClient redissonClient;
 
     @Autowired
     private HttpServletRequest request;
+
+    @Autowired
+    private RedisPool redisPool;
 
     @Pointcut(value = "@within(ren.com.cn.common.annotation.EnableReSubmit) || @annotation(ren.com.cn.common.annotation.EnableReSubmit)")
     public void allMethods() {
@@ -54,11 +56,11 @@ public class RepeatSubmitAspect {
         if (annotation != null && !annotation.enable()) {
             Object args = pjp.getArgs()[0];
             String key = JSON.toJSONString(args + request.getRemoteHost());
-            String value = jedis.get(key);
+            String value = redisPool.getJedis().get(key);
             if (value != null) {
                 throw new ServiceException(ReturnCode.RE_SUBMIT);
             } else {
-                jedis.setex(key, (int) TimeoutUtils.
+                redisPool.getJedis().setex(key, (int) TimeoutUtils.
                         toSeconds(annotation.maxWait(), annotation.unit()), "exist");
 
 
