@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/demo
     username: root
-    password: xxxxx
+    password: xxxxxx
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
@@ -25,6 +25,13 @@ spring:
     view:
         prefix: /templates/
         suffix: .html
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+  actuator:
+    enabled: true
+    sensitive: false
 
 delivery:
   appId: xxx
@@ -60,6 +67,7 @@ kafka:
             zookeeperConnect: 127.0.0.1:2181
 email:
   fromAddr: 820941512@qq.com
+
 
 
 
