@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
-    <property name="LOG_HOME" value="/data/logs/vip-svr-web"/>
+    <property name="LOG_HOME" value="/data/logs/spring-boot-demo"/>
 
     <property name="MSG_PATTERN" value="%d{ISO8601} -- %msg%n"/>
     <property name="NORMAL_PATTERN" value="%d{ISO8601} %-5level -- %-50.50logger -- %msg%n"/>

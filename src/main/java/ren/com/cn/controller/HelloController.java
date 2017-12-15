@@ -25,10 +25,14 @@ public class HelloController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    public String index() {
+    public String hello() {
         return "Hello World";
     }
 
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
 
     @RequestMapping("/json")
     public String json() throws MyException {

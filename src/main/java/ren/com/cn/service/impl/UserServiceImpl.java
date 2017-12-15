@@ -7,12 +7,16 @@ import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import ren.com.cn.dao.mapper.gen.UserMapper;
 import ren.com.cn.domain.entity.User;
 import ren.com.cn.domain.entity.UserExample;
+import ren.com.cn.domain.vo.UserVo;
 import ren.com.cn.service.IUserService;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,14 +37,28 @@ public class UserServiceImpl implements IUserService {
         PageHelper.startPage(page.getPageNum(), page.getPageSize());
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
-        criteria.andUserIdIsNotNull().andUserNameLike(String.format("%s%s%s", "%",username,"%"));
-        List<User> list = userMapper.selectByExample(example);
+        criteria.andUserIdIsNotNull().andUserNameLike(String.format("%s%s%s", "%",username,"%"));List<User> list = userMapper.selectByExample(example);
 
         Long total = ((Page) list).getTotal();
-        page.setList(list);
+        page.setList(transferToVo(list));
         page.setTotal(total);
         return page;
 
+    }
+
+    private List transferToVo(List<User> list) {
+        List<UserVo> voList = Lists.newArrayList();
+        list.forEach(e -> {
+            UserVo userVo = new UserVo();
+            userVo.setCtime(e.getCtime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            userVo.setMtime(e.getMtime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            userVo.setSex(e.getSex());
+            userVo.setStatus(e.getStatus());
+            userVo.setUserId(e.getUserId());
+            userVo.setUserName(e.getUserName());
+            voList.add(userVo);
+        });
+        return voList;
     }
 
     @Override
