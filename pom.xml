@@ -21,6 +21,13 @@
         <excelUtil.version>1.0.1</excelUtil.version>
         <poi.version>3.10-FINAL</poi.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>com.alibaba</groupId>
