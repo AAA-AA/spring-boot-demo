@@ -15,6 +15,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <properties>
+        <start-class>ren.com.cn.Application</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <mysql.version>5.7.17</mysql.version>
@@ -207,12 +208,6 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.sanjusoftware</groupId>
-            <artifactId>yamlbeans</artifactId>
-            <version>1.11</version>
         </dependency>
         <!--<dependency>
             <groupId>org.mybatis.generator</groupId>
