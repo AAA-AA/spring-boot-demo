@@ -1,6 +1,7 @@
 package ren.com.cn.scheduler.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomUtils;
@@ -12,6 +13,7 @@ import ren.com.cn.scheduler.IScheduler;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  * @author : hongqiangren.
@@ -23,8 +25,9 @@ public class Scheduler implements IScheduler{
 
 
 
-    @Scheduled(cron = "0/10 * * * * ? ")
-    public void refresh() {
+    @Scheduled(cron = "0/1 * * * * ? ")
+    public void refresh() throws InterruptedException {
+        List<SmsSendLog> list = Lists.newArrayList();
         SmsSendLog temp = null;
         for (int i = 0;i < 10000;i++) {
             SmsSendLog sendLog = new SmsSendLog();
@@ -32,7 +35,7 @@ public class Scheduler implements IScheduler{
             sendLog.setContent("jljdfa");
             sendLog.setCreatedAt(LocalDateTime.now());
             sendLog.setSmsUuid(DigestUtils.md5Hex(String.valueOf(RandomUtils.nextInt(1,10))));
-            log.debug(JSON.toJSONString(sendLog));
+            list.add(sendLog);
         }
     }
 

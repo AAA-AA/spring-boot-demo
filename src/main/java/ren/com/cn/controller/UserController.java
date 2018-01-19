@@ -63,18 +63,13 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/id", method = RequestMethod.GET)
     @ResponseBody
-    public User getUser(@PathVariable Long id) {
-
-        return userService.getById(id);
+    public ResponseDTO getUserById(@RequestParam Long id) {
+        User user = userService.getById(id);
+        return ResponseDTO.success(user);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteUser(@PathVariable Long id) {
-        users.remove(id);
-        return "success";
-    }
 
     @RequestMapping(value = "/getTableData", method = RequestMethod.GET)
     @ResponseBody
