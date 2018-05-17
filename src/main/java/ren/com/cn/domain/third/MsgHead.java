@@ -20,7 +20,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @XmlRootElement(name = "xml")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserMsg implements Serializable {
+public class MsgHead implements Serializable {
 
     /**
      * 开发者微信号
@@ -57,5 +57,18 @@ public class UserMsg implements Serializable {
      */
     @XmlElement(name = "MsgId")
     private String msgId;
+
+    public enum MsgType {
+        TEXT("text"),
+        EVENT("text"),
+        IMAGE("image");
+        private String value;
+        MsgType(String value) {
+            this.value = value;
+        }
+        public String getValue() {
+            return value;
+        }
+    }
 
 }
