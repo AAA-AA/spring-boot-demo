@@ -1,11 +1,11 @@
 # 端口，暂无作用server:
 server:
-  port: 8080
+  port: 80
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/demo
-    username: xxxx
-    password: xxxx
+    username: root
+    password: 1101
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
