@@ -2,10 +2,8 @@ package ren.com.cn.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import ren.com.cn.domain.third.UserMsg;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -32,6 +30,12 @@ public class WechatTokenController {
         String signHex = getSignHex(timestamp,nonce);
         log.info("wechat signature:----{}-----,campute signature:{}",signature,signHex);
         return echostr;
+    }
+
+    @RequestMapping(value = "/receiveMsg", method = RequestMethod.POST)
+    @ResponseBody
+    public void getUserMsg(@RequestBody UserMsg userMsg) {
+        log.info("receive msg {}",userMsg);
     }
 
     private String getSignHex(String timestamp, String nonce) throws NoSuchAlgorithmException {
