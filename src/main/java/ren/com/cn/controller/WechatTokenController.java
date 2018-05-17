@@ -39,7 +39,7 @@ public class WechatTokenController {
         StringBuffer sb = new StringBuffer();
         // 字符串排序
         Arrays.sort(array);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < array.length; i++) {
             sb.append(array[i]);
         }
         String str = sb.toString();
